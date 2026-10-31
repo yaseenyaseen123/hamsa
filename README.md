@@ -1,12 +1,7 @@
 # قناة همسة ياسين | البث المباشر الرسمي 📺✨
 
-موقع البث المباشر الرسمي ولوحة التحكم السحابية المفصولة لقناة **«همسة ياسين»** بتصميم عربي أصيل (الزمرد الملكي، العاجي الدافئ، والذهب المعتق).
+موقع البث المباشر الرسمي ولوحة التحكم السحابية المفصولة لقناة **«همسة ياسين»**.
 
-## 🌐 الروابط المباشرة بعد التفعيل على GitHub Pages:
-
-1. **📺 واجهة المشاهدين العامة (خالية تماماً من لوحة التحكم وروابط M3U8):**
-   - [https://yaseenyaseen123.github.io/hamsa/](https://yaseenyaseen123.github.io/hamsa/)
-2. **🔒 بوابة الإدارة ولوحة التحكم المستقلة (لتغيير رابط M3U8 والأخبار RSS والجدول):**
-   - [https://yaseenyaseen123.github.io/hamsa/admin.html](https://yaseenyaseen123.github.io/hamsa/admin.html)
-3. **📡 ملف البيانات الحية المتزامن:**
-   - `channel-data.json` (يتم تحديثه تلقائياً من لوحة التحكم ويقرؤه موقع المشاهدين بشكل حي).
+## 🌐 الروابط المباشرة:
+1. **واجهة المشاهدين:** [https://yaseenyaseen123.github.io/hamsa/](https://yaseenyaseen123.github.io/hamsa/)
+2. **لوحة التحكم المستقلة:** [https://yaseenyaseen123.github.io/hamsa/admin.html](https://yaseenyaseen123.github.io/hamsa/admin.html)
