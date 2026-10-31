@@ -14,13 +14,13 @@
   "uploadedVideoName": "",
   "uploadedVideosPlaylist": [
     {
-      "id": "vid_1793448156297_ol9bp",
-      "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
-      "url": ""
+      "id": "vid_1793451732771_9y3j",
+      "name": "فيديو مباشر",
+      "url": "./media/channel-video.mp4"
     }
   ],
   "uploadedActiveIndex": 0,
-  "uploadPlaybackOrder": "sequential",
+  "uploadPlaybackOrder": "random",
   "loopUploadedVideo": true,
   "liveStatus": "live",
   "showWatermark": true,
@@ -69,5 +69,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T12:58:21.168Z"
+  "updatedAt": "2026-10-31T13:04:05.645Z"
 }
