@@ -1012,7 +1012,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <svg class="w-3.5 h-3.5 text-[#C49A45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <span id="headerClock">١٢:١٤ م</span>
+            <span id="headerClock">١٢:٢١ م</span>
           </div>
         </div>
 
@@ -1051,10 +1051,10 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div id="playerContainer" class="player-viewport aspect-video w-full rounded-2xl relative select-none shadow-inner border border-[#C49A45]/30">
               
               <!-- HTML5 Video Element (For M3U8 Streams & Uploaded Videos) -->
-              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" src="blob:https://yaseenyaseen123.github.io/830514ae-11eb-4718-a632-51f1f52d6f0e" loop=""></video>
+              <video id="hlsVideo" class="w-full h-full rounded-2xl hidden" playsinline="" crossorigin="anonymous" loop=""></video>
 
               <!-- YouTube Embed Player Element (For YouTube Live & Videos) -->
-              <iframe id="youtubeEmbedPlayer" class="hidden w-full h-full rounded-2xl border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src=""></iframe>
+              <iframe id="youtubeEmbedPlayer" class="w-full h-full rounded-2xl border-0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src="https://www.youtube.com/embed/Qp2kojGBJrY?autoplay=1&amp;rel=0&amp;modestbranding=1&amp;playsinline=1&amp;loop=1&amp;playlist=Qp2kojGBJrY"></iframe>
 
               <!-- On-Screen Channel Watermark -->
               <div id="channelWatermark" class="absolute top-4 right-4 z-10 pointer-events-none flex items-center gap-2 px-3.5 py-1.5 rounded-full backdrop-blur-md bg-[#143B2D]/80 border border-[#C49A45]/70 shadow-sm transition-opacity duration-300" style="opacity: 1;">
@@ -1064,7 +1064,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
 
               <!-- Stream Resolution Pill (Top Left) -->
               <div id="streamTechBadge" class="absolute top-4 left-4 z-10 pointer-events-none hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded-lg backdrop-blur-md bg-[#FBF9F5]/85 border border-[#E4DBC7] text-[11px] font-bold text-[#143B2D]">
-                <span id="streamResolutionLabel">فيديو القناة • HD</span>
+                <span id="streamResolutionLabel">بث يوتيوب • HD</span>
               </div>
 
               <!-- Loading Spinner Overlay (Never shows the M3U8 URL to viewers) -->
@@ -1136,7 +1136,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               <!-- Center Stream Status Text -->
               <div class="hidden md:flex items-center gap-2 text-xs text-[#F3EFE6]/90">
                 <span class="w-2 h-2 rounded-full bg-[#DFBE73]"></span>
-                <span id="playerStatusText">يُعرض الآن: Заставка.mp4</span>
+                <span id="playerStatusText">البث المباشر عبر يوتيوب • قناة همسة ياسين</span>
               </div>
 
               <!-- Left Side Controls (Quality Selector, PiP, Fullscreen) -->
@@ -1362,7 +1362,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ================= TOAST NOTIFICATION ================= -->
   <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform pointer-events-none transition-all duration-300 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border translate-y-20 opacity-0" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">
     <span class="w-2.5 h-2.5 rounded-full bg-[#DFBE73]"></span>
-    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">تعذر رفع ملف الفيديو (401)</span>
+    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">▶️ تم تشغيل بث يوتيوب على شاشة قناة همسة ياسين بنجاح!</span>
   </div>
 
   <!-- ================= APPLICATION JAVASCRIPT ================= -->
@@ -1374,10 +1374,10 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   "channelName": "همسة ياسين",
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
   "theme": "emerald",
-  "streamType": "upload",
+  "streamType": "youtube",
   "streamKey": "aHR0cHM6Ly90ZXN0LXN0cmVhbXMubXV4LmRldi94MzZ4aHp6L3gzNnhoenoubTN1OA==",
-  "youtubeUrl": "",
-  "youtubeVideoId": "",
+  "youtubeUrl": "https://youtu.be/Qp2kojGBJrY",
+  "youtubeVideoId": "Qp2kojGBJrY",
   "uploadedVideoUrl": "",
   "uploadedVideoName": "Заставка.mp4",
   "loopUploadedVideo": true,
@@ -1428,7 +1428,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T09:14:59.275Z"
+  "updatedAt": "2026-10-31T09:22:01.546Z"
 };
         let hlsInstance = null;
         let fetchedRssHeadlines = [];
