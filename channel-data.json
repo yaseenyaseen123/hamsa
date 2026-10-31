@@ -1,0 +1,54 @@
+{
+  "channelName": "همسة ياسين",
+  "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
+  "theme": "emerald",
+  "streamKey": "aHR0cHM6Ly90ZXN0LXN0cmVhbXMubXV4LmRldi94MzZ4aHp6L3gzNnhoenoubTN1OA==",
+  "liveStatus": "live",
+  "showWatermark": true,
+  "autoPlay": true,
+  "showTicker": true,
+  "tickerMode": "hybrid",
+  "rssUrl": "https://feeds.bbci.co.uk/arabic/rss.xml",
+  "rssSourceLabel": "أخبار الساعة • RSS",
+  "rssLimit": 12,
+  "rssRefreshMins": 10,
+  "tickerSpeed": 42,
+  "tickerText": "أهلاً بكم في البث المباشر الرسمي لقناة «همسة ياسين» • نسعد بمتابعتكم لبرامجنا الحوارية والثقافية اليومية على مدار الساعة",
+  "programTitle": "إشراقات وهمسات المساء مع همسة ياسين",
+  "programPresenter": "الأستاذة همسة ياسين",
+  "programCategory": "البرنامج الرئيسي",
+  "viewerCount": "1,420",
+  "programDesc": "مساحة حوارية وثقافية راقية تطل عليكم عبر قناة همسة ياسين، نطرح فيها قضايا المجتمع والفكر والأدب بأسلوب هادئ يجمع بين الأصالة والمعاصرة.",
+  "dailyWhisper": "«الكلمة الطيبة نورٌ يفتح مغاليق القلوب، والهدوء حكمةٌ تزيد البصيرة صفاءً وجمالاً.»",
+  "schedule": [
+    {
+      "id": 1,
+      "time": "05:00 م",
+      "title": "نسائم الأصيل وخواطر أدبية",
+      "host": "همسة ياسين",
+      "active": false
+    },
+    {
+      "id": 2,
+      "time": "08:00 م",
+      "title": "إشراقات وهمسات المساء مع همسة ياسين",
+      "host": "الأستاذة همسة ياسين",
+      "active": true
+    },
+    {
+      "id": 3,
+      "time": "10:00 م",
+      "title": "لقاء الثقافة والفكر العربي",
+      "host": "ضيوف القناة",
+      "active": false
+    },
+    {
+      "id": 4,
+      "time": "11:30 م",
+      "title": "واحة السكينة وختام السهرة",
+      "host": "همسة ياسين",
+      "active": false
+    }
+  ],
+  "updatedAt": "2026-10-31T07:53:39.963Z"
+}
