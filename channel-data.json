@@ -21,12 +21,17 @@
   "uploadedVideoName": "",
   "uploadedVideosPlaylist": [
     {
+      "id": "vid_1793443737592_kdbo9",
+      "name": "AQMASeanMl953KDsJu7jzeXmncKEf7sMGGJxnQOQj6fsjfjrjBa8ic7v1M_9ZBq8rVc52JSZcq_vxxcfb8cC0-Xj.mp4",
+      "url": ""
+    },
+    {
       "id": "vid_1793443349146_kil5l",
       "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
       "url": ""
     }
   ],
-  "uploadedActiveIndex": 0,
+  "uploadedActiveIndex": 1,
   "uploadPlaybackOrder": "sequential",
   "loopUploadedVideo": true,
   "liveStatus": "live",
@@ -76,5 +81,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T10:46:04.587Z"
+  "updatedAt": "2026-10-31T11:01:14.920Z"
 }
