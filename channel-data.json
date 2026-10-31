@@ -3,7 +3,7 @@
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
   "theme": "burgundy",
   "streamKey": "aHR0cHM6Ly9jcGgtcDJwLW1zbC5ha2FtYWl6ZWQubmV0L2hscy9saXZlLzIwMDAzNDEvdGVzdC9tYXN0ZXIubTN1OA==",
-  "liveStatus": "live",
+  "liveStatus": "recorded",
   "showWatermark": true,
   "autoPlay": true,
   "showTicker": true,
@@ -50,5 +50,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T08:28:25.651Z"
+  "updatedAt": "2026-10-31T08:30:34.926Z"
 }
