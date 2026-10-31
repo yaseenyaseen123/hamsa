@@ -964,7 +964,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               <h2 class="font-amiri text-lg sm:text-xl font-bold text-[#FBF9F5]">
                 🚀 الناشر السحابي المباشر إلى GitHub (yaseenyaseen123/hamsa)
               </h2>
-              <span id="ghDeployStatusBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-[#C49A45] text-[#143B2D]">جاري الرفع السحابي...</span>
+              <span id="ghDeployStatusBadge" class="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-400 text-[#143B2D]">جاري الرفع السحابي...</span>
             </div>
             <p class="text-xs text-[#DFBE73]/90 mt-0.5">
               يرفع الموقع مفصولاً إلى ملفات حقيقية في مستودعك: <code class="font-mono text-[#FBF9F5]">index.html</code> (للمشاهدين فقط) + <code class="font-mono text-[#FBF9F5]">admin.html</code> (لوحة التحكم المستقلة) + <code class="font-mono text-[#FBF9F5]">channel-data.json</code> (بيانات البث وRSS)
@@ -1027,11 +1027,11 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
             <div id="ghProgressBarFill" class="h-full transition-all duration-300 rounded-full" style="width: 76%; background: linear-gradient(90deg, rgb(196, 154, 69), rgb(242, 220, 155));"></div>
           </div>
-          <div id="ghDeployLogsList" class="max-h-36 overflow-y-auto font-mono text-[11px] space-y-1 text-[#F3EFE6]/90 pr-1"><div class="text-[#F3EFE6]/90">[٣:٠٤:٥٨ م] الاتصال بالمستودع https://api.github.com/repos/yaseenyaseen123/hamsa ...</div><div class="text-emerald-300 font-bold">[٣:٠٤:٥٩ م] ✓ تم الاتصال بنجاح بالمستودع: yaseenyaseen123/hamsa</div><div class="text-emerald-300 font-bold">[٣:٠٥:٠٠ م] ✓ تم رفع channel-data.json بنجاح</div><div class="text-emerald-300 font-bold">[٣:٠٥:٠٩ م] ✓ تم رفع index.html بنجاح</div></div>
+          <div id="ghDeployLogsList" class="max-h-36 overflow-y-auto font-mono text-[11px] space-y-1 text-[#F3EFE6]/90 pr-1"><div class="text-[#F3EFE6]/90">[٣:٠٨:٣٨ م] الاتصال بالمستودع https://api.github.com/repos/yaseenyaseen123/hamsa ...</div><div class="text-emerald-300 font-bold">[٣:٠٨:٤١ م] ✓ تم الاتصال بنجاح بالمستودع: yaseenyaseen123/hamsa</div><div class="text-emerald-300 font-bold">[٣:٠٨:٤٨ م] ✓ تم رفع channel-data.json بنجاح</div><div class="text-emerald-300 font-bold">[٣:٠٩:٠١ م] ✓ تم رفع index.html بنجاح</div></div>
         </div>
 
         <!-- Published Live URLs Box (Appears after successful push) -->
-        <div id="ghPublishedLinksBox" class="hidden p-4 rounded-2xl bg-emerald-950/80 border-2 border-[#DFBE73] space-y-3">
+        <div id="ghPublishedLinksBox" class="p-4 rounded-2xl bg-emerald-950/80 border-2 border-[#DFBE73] space-y-3 hidden">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-emerald-400 live-dot-pulse"></span>
@@ -1047,9 +1047,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div class="p-3 rounded-xl bg-white/10 border border-[#DFBE73]/40 flex flex-col justify-between gap-2">
               <div>
                 <span class="text-[11px] text-[#DFBE73] font-bold block">📺 1. رابط موقع المشاهدين العام (بدون لوحة تحكم):</span>
-                <a id="linkPublicSite" href="https://yaseenyaseen123.github.io/hamsa/" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">
-                  https://yaseenyaseen123.github.io/hamsa/
-                </a>
+                <a id="linkPublicSite" href="https://yaseenyaseen123.github.io/hamsa/" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">https://yaseenyaseen123.github.io/hamsa/</a>
               </div>
               <div class="flex items-center gap-2 pt-1">
                 <a id="btnOpenPublicSite" href="https://yaseenyaseen123.github.io/hamsa/" target="_blank" rel="noopener" class="px-3 py-1 rounded-lg bg-[#C49A45] text-[#143B2D] font-bold">فتح الموقع ↗</a>
@@ -1061,9 +1059,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div class="p-3 rounded-xl bg-white/10 border border-[#DFBE73]/40 flex flex-col justify-between gap-2">
               <div>
                 <span class="text-[11px] text-[#DFBE73] font-bold block">🔒 2. رابط لوحة التحكم المستقلة (للإدارة فقط):</span>
-                <a id="linkAdminSite" href="https://yaseenyaseen123.github.io/hamsa/admin.html" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">
-                  https://yaseenyaseen123.github.io/hamsa/admin.html
-                </a>
+                <a id="linkAdminSite" href="https://yaseenyaseen123.github.io/hamsa/admin.html" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">https://yaseenyaseen123.github.io/hamsa/admin.html</a>
               </div>
               <div class="flex items-center gap-2 pt-1">
                 <a id="btnOpenAdminSite" href="https://yaseenyaseen123.github.io/hamsa/admin.html" target="_blank" rel="noopener" class="px-3 py-1 rounded-lg bg-[#C49A45] text-[#143B2D] font-bold">فتح لوحة التحكم ↗</a>
@@ -1075,9 +1071,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div class="p-3 rounded-xl bg-white/10 border border-[#DFBE73]/40 flex flex-col justify-between gap-2">
               <div>
                 <span class="text-[11px] text-[#DFBE73] font-bold block">🗂️ 3. ملفات المستودع على GitHub:</span>
-                <a id="linkRepoFiles" href="https://github.com/yaseenyaseen123/hamsa" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">
-                  https://github.com/yaseenyaseen123/hamsa
-                </a>
+                <a id="linkRepoFiles" href="https://github.com/yaseenyaseen123/hamsa" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">https://github.com/yaseenyaseen123/hamsa</a>
               </div>
               <div class="flex items-center gap-2 pt-1">
                 <a id="btnOpenRepoFiles" href="https://github.com/yaseenyaseen123/hamsa" target="_blank" rel="noopener" class="px-3 py-1 rounded-lg bg-white/20 text-white font-bold">استعراض الملفات ↗</a>
@@ -1749,9 +1743,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
                 <button type="button" onclick="playUploadedPlaylistNow()" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold text-[#FBF9F5] shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-1.5" style="background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)); border: 1px solid var(--accent-gold);">
                   <span>▶️ تشغيل قائمة الفيديوهات على القناة</span>
                 </button>
-                <button type="button" onclick="uploadAllPlaylistVideosToGitHub()" id="btnUploadVideoToGh" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold border hover:shadow-sm transition-all flex items-center justify-center gap-1.5" style="background-color: var(--accent-gold-Pale); border-color: var(--accent-gold); color: var(--brand-primary);">
-                  <span>☁️ رفع كل فيديوهات القائمة إلى GitHub</span>
-                </button>
+                <button type="button" onclick="uploadAllPlaylistVideosToGitHub()" id="btnUploadVideoToGh" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold border hover:shadow-sm transition-all flex items-center justify-center gap-1.5" style="background-color: var(--accent-gold-Pale); border-color: var(--accent-gold); color: var(--brand-primary);" disabled=""><span>⏳ رفع الفيديو (1/1)...</span></button>
               </div>
             </div>
           </div>
@@ -2327,7 +2319,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ================= TOAST NOTIFICATION ================= -->
   <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform pointer-events-none transition-all duration-300 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border translate-y-20 opacity-0" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">
     <span class="w-2.5 h-2.5 rounded-full bg-[#DFBE73]"></span>
-    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">تم التحويل إلى وضع البث</span>
+    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">🎉 تم رفع الموقع كاملاً وفصل لوحة التحكم على GitHub بنجاح!</span>
   </div>
 
   <!-- ================= APPLICATION JAVASCRIPT ================= -->
