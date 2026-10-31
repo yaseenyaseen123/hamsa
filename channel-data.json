@@ -2,11 +2,18 @@
   "channelName": "همسة ياسين",
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
   "theme": "emerald",
-  "streamType": "upload",
+  "streamType": "youtube",
   "streamKey": "aHR0cHM6Ly90ZXN0LXN0cmVhbXMubXV4LmRldi94MzZ4aHp6L3gzNnhoenoubTN1OA==",
-  "youtubeUrl": "",
-  "youtubeVideoId": "",
-  "youtubePlaylist": [],
+  "youtubeUrl": "https://youtu.be/Qp2kojGBJrY",
+  "youtubeVideoId": "Qp2kojGBJrY",
+  "youtubePlaylist": [
+    {
+      "id": "yt_1793443428918_8r1u",
+      "videoId": "Qp2kojGBJrY",
+      "url": "https://youtu.be/Qp2kojGBJrY",
+      "title": "برنامج همسة ياسين #1"
+    }
+  ],
   "youtubeActiveIndex": 0,
   "youtubePlaybackOrder": "sequential",
   "youtubeStrictTvMode": true,
@@ -14,7 +21,7 @@
   "uploadedVideoName": "",
   "uploadedVideosPlaylist": [
     {
-      "id": "vid_1793442307911_iuqri",
+      "id": "vid_1793443349146_kil5l",
       "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
       "url": ""
     }
@@ -69,5 +76,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T10:30:01.850Z"
+  "updatedAt": "2026-10-31T10:44:16.709Z"
 }
