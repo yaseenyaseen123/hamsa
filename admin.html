@@ -1027,7 +1027,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
             <div id="ghProgressBarFill" class="h-full transition-all duration-300 rounded-full" style="width: 76%; background: linear-gradient(90deg, rgb(196, 154, 69), rgb(242, 220, 155));"></div>
           </div>
-          <div id="ghDeployLogsList" class="max-h-36 overflow-y-auto font-mono text-[11px] space-y-1 text-[#F3EFE6]/90 pr-1"><div class="text-[#F3EFE6]/90">[٣:٠٨:٣٨ م] الاتصال بالمستودع https://api.github.com/repos/yaseenyaseen123/hamsa ...</div><div class="text-emerald-300 font-bold">[٣:٠٨:٤١ م] ✓ تم الاتصال بنجاح بالمستودع: yaseenyaseen123/hamsa</div><div class="text-emerald-300 font-bold">[٣:٠٨:٤٨ م] ✓ تم رفع channel-data.json بنجاح</div><div class="text-emerald-300 font-bold">[٣:٠٩:٠١ م] ✓ تم رفع index.html بنجاح</div></div>
+          <div id="ghDeployLogsList" class="max-h-36 overflow-y-auto font-mono text-[11px] space-y-1 text-[#F3EFE6]/90 pr-1"><div class="text-[#F3EFE6]/90">[٣:٣٥:٣٤ م] الاتصال بالمستودع https://api.github.com/repos/yaseenyaseen123/hamsa ...</div><div class="text-emerald-300 font-bold">[٣:٣٥:٣٥ م] ✓ تم الاتصال بنجاح بالمستودع: yaseenyaseen123/hamsa</div><div class="text-emerald-300 font-bold">[٣:٣٥:٣٧ م] ✓ تم رفع channel-data.json بنجاح</div><div class="text-emerald-300 font-bold">[٣:٣٥:٤٧ م] ✓ تم رفع index.html بنجاح</div></div>
         </div>
 
         <!-- Published Live URLs Box (Appears after successful push) -->
@@ -1204,7 +1204,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div id="playerContainer" class="player-viewport aspect-video w-full rounded-2xl relative select-none shadow-inner border border-[#C49A45]/30">
               
               <!-- HTML5 Video Element (For M3U8 Streams & Uploaded Videos Playlist) -->
-              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" loop="" src="blob:https://yaseenyaseen123.github.io/2bf0452e-f427-4aa8-8391-67e840d775d4"></video>
+              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" src="blob:https://yaseenyaseen123.github.io/2bf0452e-f427-4aa8-8391-67e840d775d4"></video>
 
               <!-- YouTube TV Broadcast Wrapper (Hides YouTube Chrome & Blocks Seeking/Pausing) -->
               <div id="youtubeTvBroadcastWrapper" class="hidden absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#112E23]">
@@ -1743,7 +1743,9 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
                 <button type="button" onclick="playUploadedPlaylistNow()" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold text-[#FBF9F5] shadow-md hover:opacity-95 transition-all flex items-center justify-center gap-1.5" style="background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)); border: 1px solid var(--accent-gold);">
                   <span>▶️ تشغيل قائمة الفيديوهات على القناة</span>
                 </button>
-                <button type="button" onclick="uploadAllPlaylistVideosToGitHub()" id="btnUploadVideoToGh" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold border hover:shadow-sm transition-all flex items-center justify-center gap-1.5" style="background-color: var(--accent-gold-Pale); border-color: var(--accent-gold); color: var(--brand-primary);" disabled=""><span>⏳ رفع الفيديو (1/1)...</span></button>
+                <button type="button" onclick="uploadAllPlaylistVideosToGitHub()" id="btnUploadVideoToGh" class="flex-1 py-2.5 px-3 rounded-xl text-xs font-bold border hover:shadow-sm transition-all flex items-center justify-center gap-1.5" style="background-color: var(--accent-gold-Pale); border-color: var(--accent-gold); color: var(--brand-primary);">
+                  <span>☁️ رفع كل فيديوهات القائمة إلى GitHub</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1754,7 +1756,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-[#C49A45]"></span>
                 <h4 class="text-xs sm:text-sm font-bold" style="color: var(--brand-primary);">
-                  قائمة تشغيل الفيديوهات المرفوعة (<span id="uploadedPlaylistCount">1</span> فيديوهات)
+                  قائمة تشغيل الفيديوهات المرفوعة (<span id="uploadedPlaylistCount">2</span> فيديوهات)
                 </h4>
               </div>
               <div class="flex items-center gap-2">
@@ -1778,8 +1780,25 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           <div class="flex items-center gap-1.5 flex-shrink-0">
             <button type="button" onclick="playSpecificUploadedItem(0)" class="px-2.5 py-1 rounded-lg text-xs font-bold border transition-all" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">✓ يعرض</button>
             <button type="button" onclick="moveUploadedPlaylistItem(0, -1)" disabled="" class="p-1.5 rounded-lg border text-xs disabled:opacity-30">⬆️</button>
-            <button type="button" onclick="moveUploadedPlaylistItem(0, 1)" disabled="" class="p-1.5 rounded-lg border text-xs disabled:opacity-30">⬇️</button>
+            <button type="button" onclick="moveUploadedPlaylistItem(0, 1)" class="p-1.5 rounded-lg border text-xs disabled:opacity-30">⬇️</button>
             <button type="button" onclick="removeUploadedPlaylistItem(0)" class="p-1.5 rounded-lg text-red-800">🗑️</button>
+          </div>
+        </div><div class="p-3 rounded-xl border flex flex-wrap items-center justify-between gap-2 transition-all" style="background-color: var(--surface-card); border-color: var(--border-warm);">
+          <div class="flex items-center gap-2.5 min-w-0 flex-1">
+            <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0" style="background-color: var(--bg-secondary); color: var(--brand-primary);">2</span>
+            <div class="min-w-0 flex-1">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <p class="text-xs sm:text-sm font-bold truncate" style="color: var(--brand-primary);">video_Dhj8ocmDoGI_1793448951_1038.mp4</p>
+                
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-800">محلي</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-1.5 flex-shrink-0">
+            <button type="button" onclick="playSpecificUploadedItem(1)" class="px-2.5 py-1 rounded-lg text-xs font-bold border transition-all" style="background-color: var(--bg-primary); color: var(--brand-primary); border-color: var(--accent-gold);">بث</button>
+            <button type="button" onclick="moveUploadedPlaylistItem(1, -1)" class="p-1.5 rounded-lg border text-xs disabled:opacity-30">⬆️</button>
+            <button type="button" onclick="moveUploadedPlaylistItem(1, 1)" disabled="" class="p-1.5 rounded-lg border text-xs disabled:opacity-30">⬇️</button>
+            <button type="button" onclick="removeUploadedPlaylistItem(1)" class="p-1.5 rounded-lg text-red-800">🗑️</button>
           </div>
         </div></div>
           </div>
@@ -2319,7 +2338,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ================= TOAST NOTIFICATION ================= -->
   <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform pointer-events-none transition-all duration-300 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border translate-y-20 opacity-0" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">
     <span class="w-2.5 h-2.5 rounded-full bg-[#DFBE73]"></span>
-    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">🎉 تم رفع الموقع كاملاً وفصل لوحة التحكم على GitHub بنجاح!</span>
+    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">Failed to fetch</span>
   </div>
 
   <!-- ================= APPLICATION JAVASCRIPT ================= -->
