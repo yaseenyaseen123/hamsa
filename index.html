@@ -1050,13 +1050,13 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div id="playerContainer" class="player-viewport aspect-video w-full rounded-2xl relative select-none shadow-inner border border-[#C49A45]/30">
               
               <!-- HTML5 Video Element (For M3U8 Streams & Uploaded Videos Playlist) -->
-              <video id="hlsVideo" class="w-full h-full rounded-2xl hidden" playsinline="" crossorigin="anonymous" loop=""></video>
+              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" loop="" src="blob:https://yaseenyaseen123.github.io/0ee3fbb6-0e6d-43b1-a634-46b7e8af926c"></video>
 
               <!-- YouTube TV Broadcast Wrapper (Hides YouTube Chrome & Blocks Seeking/Pausing) -->
-              <div id="youtubeTvBroadcastWrapper" class="absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#112E23]">
+              <div id="youtubeTvBroadcastWrapper" class="absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#112E23] hidden">
                 <!-- Slightly scaled iframe container to crop out YouTube top title/share hover bars -->
                 <div class="relative w-full h-full overflow-hidden">
-                  <iframe id="youtubeApiPlayerSlot" class="w-full h-full pointer-events-none scale-[1.06] origin-center" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="الصحفي الصغير همسة ياسين من قلقيلية" width="100%" height="100%" src="https://www.youtube.com/embed/Qp2kojGBJrY?autoplay=1&amp;controls=0&amp;disablekb=1&amp;fs=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fyaseenyaseen123.github.io&amp;widgetid=1&amp;forigin=https%3A%2F%2Fyaseenyaseen123.github.io%2Fhamsa%2Fadmin.html%23admin&amp;aoriginsup=1&amp;gporigin=https%3A%2F%2Fyaseenyaseen123.github.io%2Fhamsa%2Fadmin.html&amp;vf=1"></iframe>
+                  <iframe id="youtubeApiPlayerSlot" class="w-full h-full pointer-events-none scale-[1.06] origin-center" frameborder="0" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" title="YouTube video player" width="100%" height="100%" src="https://www.youtube.com/embed/Qp2kojGBJrY?autoplay=1&amp;controls=0&amp;disablekb=1&amp;fs=0&amp;iv_load_policy=3&amp;modestbranding=1&amp;rel=0&amp;playsinline=1&amp;enablejsapi=1&amp;origin=https%3A%2F%2Fyaseenyaseen123.github.io&amp;widgetid=1&amp;forigin=https%3A%2F%2Fyaseenyaseen123.github.io%2Fhamsa%2Fadmin.html%23admin&amp;aoriginsup=1&amp;gporigin=https%3A%2F%2Fyaseenyaseen123.github.io%2Fhamsa%2Fadmin.html&amp;vf=1"></iframe>
                   <iframe id="youtubeEmbedPlayer" class="hidden w-full h-full border-0 pointer-events-none scale-[1.06] origin-center" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="" src=""></iframe>
                 </div>
 
@@ -1372,7 +1372,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ================= TOAST NOTIFICATION ================= -->
   <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform pointer-events-none transition-all duration-300 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border translate-y-20 opacity-0" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">
     <span class="w-2.5 h-2.5 rounded-full bg-[#DFBE73]"></span>
-    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">▶️ يُعرض الآن: برنامج همسة ياسين #1</span>
+    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">🎬 يُعرض الآن: video_Qp2kojGBJrY_1793439381_7724.mp4</span>
   </div>
 
   <!-- ================= APPLICATION JAVASCRIPT ================= -->
@@ -1383,7 +1383,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   "channelName": "همسة ياسين",
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
   "theme": "emerald",
-  "streamType": "youtube",
+  "streamType": "upload",
   "streamKey": "aHR0cHM6Ly90ZXN0LXN0cmVhbXMubXV4LmRldi94MzZ4aHp6L3gzNnhoenoubTN1OA==",
   "youtubeUrl": "https://youtu.be/Qp2kojGBJrY",
   "youtubeVideoId": "Qp2kojGBJrY",
@@ -1457,7 +1457,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T10:44:18.245Z"
+  "updatedAt": "2026-10-31T10:46:05.865Z"
 };
         let hlsInstance = null;
         let fetchedRssHeadlines = [];
