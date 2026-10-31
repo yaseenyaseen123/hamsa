@@ -12,7 +12,7 @@
   "rssSourceLabel": "أخبار الساعة • RSS",
   "rssLimit": 12,
   "rssRefreshMins": 10,
-  "tickerSpeed": 42,
+  "tickerSpeed": 10,
   "tickerText": "أهلاً بكم في البث المباشر الرسمي لقناة «همسة ياسين» • نسعد بمتابعتكم لبرامجنا الحوارية والثقافية اليومية على مدار الساعة",
   "programTitle": "إشراقات وهمسات المساء مع همسة ياسين",
   "programPresenter": "الأستاذة همسة ياسين",
@@ -50,5 +50,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T07:58:43.229Z"
+  "updatedAt": "2026-10-31T08:11:11.750Z"
 }
