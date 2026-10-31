@@ -1,8 +1,14 @@
 {
   "channelName": "همسة ياسين",
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
-  "theme": "burgundy",
-  "streamKey": "aHR0cHM6Ly90b3B0b3Auc2JzOjQ0My9zYWJhMTIvc2FiYTEyLzQyMzYubTN1OA==",
+  "theme": "emerald",
+  "streamType": "m3u8",
+  "streamKey": "aHR0cHM6Ly90ZXN0LXN0cmVhbXMubXV4LmRldi94MzZ4aHp6L3gzNnhoenoubTN1OA==",
+  "youtubeUrl": "",
+  "youtubeVideoId": "",
+  "uploadedVideoUrl": "",
+  "uploadedVideoName": "",
+  "loopUploadedVideo": true,
   "liveStatus": "live",
   "showWatermark": true,
   "autoPlay": true,
@@ -14,8 +20,8 @@
   "rssRefreshMins": 10,
   "tickerSpeed": 10,
   "tickerText": "أهلاً بكم في البث المباشر الرسمي لقناة «همسة ياسين» • نسعد بمتابعتكم لبرامجنا الحوارية والثقافية اليومية على مدار الساعة",
-  "programTitle": "نسائم الأصيل وخواطر أدبية",
-  "programPresenter": "همسة ياسين",
+  "programTitle": "إشراقات وهمسات المساء مع همسة ياسين",
+  "programPresenter": "الأستاذة همسة ياسين",
   "programCategory": "البرنامج الرئيسي",
   "viewerCount": "1,420",
   "programDesc": "مساحة حوارية وثقافية راقية تطل عليكم عبر قناة همسة ياسين، نطرح فيها قضايا المجتمع والفكر والأدب بأسلوب هادئ يجمع بين الأصالة والمعاصرة.",
@@ -26,14 +32,14 @@
       "time": "05:00 م",
       "title": "نسائم الأصيل وخواطر أدبية",
       "host": "همسة ياسين",
-      "active": true
+      "active": false
     },
     {
       "id": 2,
       "time": "08:00 م",
       "title": "إشراقات وهمسات المساء مع همسة ياسين",
       "host": "الأستاذة همسة ياسين",
-      "active": false
+      "active": true
     },
     {
       "id": 3,
@@ -50,5 +56,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-10-31T09:00:44.091Z"
+  "updatedAt": "2026-10-31T09:02:52.442Z"
 }
