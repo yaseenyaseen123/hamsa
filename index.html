@@ -1014,7 +1014,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <svg class="w-3.5 h-3.5 text-[#C49A45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <span id="headerClock">٠٩:١٥ ص</span>
+            <span id="headerClock">٠٩:١٦ ص</span>
           </div>
         </div>
 
@@ -1053,7 +1053,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div id="playerContainer" class="player-viewport aspect-video w-full rounded-2xl relative select-none shadow-inner border border-[#C49A45]/30">
               
               <!-- HTML5 Video Element (For M3U8 Streams & Uploaded Videos Playlist) -->
-              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" loop="" src="https://tmpfiles.org/dl/wHAeT8qxptwn/video_qp2kojgbjry_1793439381_7724.mp4"></video>
+              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" loop="" src="blob:https://yaseenyaseen123.github.io/def0665c-a0e4-457e-91cd-0523766ba8ee"></video>
 
               <!-- YouTube TV Broadcast Wrapper (Hides YouTube Chrome & Blocks Seeking/Pausing) -->
               <div id="youtubeTvBroadcastWrapper" class="hidden absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#112E23]">
@@ -1090,16 +1090,12 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               </div>
 
               <!-- Standby / Reconnect Overlay (Viewer-safe, zero URL exposure) -->
-              <div id="playerStateOverlay" class="hidden absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#143B2D]/95 to-[#112E23]/98 text-[#FBF9F5] p-6 text-center">
+              <div id="playerStateOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#143B2D]/95 to-[#112E23]/98 text-[#FBF9F5] p-6 text-center hidden">
                 <div class="w-16 h-16 mb-3 rounded-2xl flex items-center justify-center border border-[#C49A45] bg-[#1E5240]/60 shadow-lg">
                   <span class="font-amiri text-2xl font-bold text-[#DFBE73]">هـ ي</span>
                 </div>
-                <h3 id="overlayTitle" class="font-amiri text-2xl sm:text-3xl font-bold text-[#DFBE73] mb-2">
-                  قناة همسة ياسين الفضائية
-                </h3>
-                <p id="overlayMessage" class="text-xs sm:text-sm text-[#F3EFE6]/90 max-w-md mb-5 leading-relaxed">
-                  البث المباشر في استراحة قصيرة أو جاري تحديث الإشارة من غرفة التحكم.
-                </p>
+                <h3 id="overlayTitle" class="font-amiri text-2xl sm:text-3xl font-bold text-[#DFBE73] mb-2">قائمة الفيديوهات المرفوعة</h3>
+                <p id="overlayMessage" class="text-xs sm:text-sm text-[#F3EFE6]/90 max-w-md mb-5 leading-relaxed">لم يتم رفع أي فيديو بعد.</p>
                 <div class="flex flex-wrap items-center justify-center gap-2.5">
                   <button onclick="reloadCurrentStream()" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#C49A45] text-[#143B2D] hover:bg-[#DFBE73] transition-all shadow-md flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1119,10 +1115,10 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               <div class="flex items-center gap-2 sm:gap-3">
                 <!-- Play / Pause -->
                 <button id="btnPlayPause" onclick="togglePlayPause()" class="w-9 h-9 rounded-xl flex items-center justify-center transition-all hover:scale-105" style="background-color: var(--accent-gold); color: var(--brand-primary);" title="تشغيل / إيقاف">
-                  <svg id="iconPlay" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <svg id="iconPlay" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
                   </svg>
-                  <svg id="iconPause" class="w-5 h-5 hidden" fill="currentColor" viewBox="0 0 20 20">
+                  <svg id="iconPause" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path>
                   </svg>
                 </button>
@@ -1399,16 +1395,16 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   "youtubeActiveIndex": 0,
   "youtubePlaybackOrder": "sequential",
   "youtubeStrictTvMode": true,
-  "uploadedVideoUrl": "https://tmpfiles.org/dl/wHAeT8qxptwn/video_qp2kojgbjry_1793439381_7724.mp4",
+  "uploadedVideoUrl": "https://tmpfiles.org/dl/wiADToNQTqxd/video_qp2kojgbjry_1793439381_7724.mp4",
   "uploadedVideoName": "video_Qp2kojGBJrY_1793439381_7724.mp4",
   "uploadedVideosPlaylist": [
     {
-      "id": "vid_1793512848910_c9pm",
+      "id": "vid_1793513769724_x2dz",
       "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
       "repoPath": "",
-      "url": "https://tmpfiles.org/dl/wHAeT8qxptwn/video_qp2kojgbjry_1793439381_7724.mp4",
+      "url": "https://tmpfiles.org/dl/wiADToNQTqxd/video_qp2kojgbjry_1793439381_7724.mp4",
       "fallbackUrls": [
-        "https://tmpfiles.org/dl/wHAeT8qxptwn/video_qp2kojgbjry_1793439381_7724.mp4"
+        "https://tmpfiles.org/dl/wiADToNQTqxd/video_qp2kojgbjry_1793439381_7724.mp4"
       ]
     }
   ],
@@ -1462,7 +1458,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
       "active": false
     }
   ],
-  "updatedAt": "2026-11-01T06:15:07.570Z"
+  "updatedAt": "2026-11-01T06:16:24.362Z"
 };
         let hlsInstance = null;
         let fetchedRssHeadlines = [];
