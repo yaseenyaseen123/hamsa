@@ -3884,6 +3884,74 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
       return `# قناة همسة ياسين | البث المباشر الرسمي 📺✨\n\nموقع البث المباشر الرسمي ولوحة التحكم السحابية المفصولة لقناة **«همسة ياسين»**.\n\n## 🌐 الروابط المباشرة:\n1. **واجهة المشاهدين:** [${pagesBase}/](${pagesBase}/)\n2. **لوحة التحكم المستقلة:** [${pagesBase}/admin.html](${pagesBase}/admin.html)\n`;
     }
 
+    async function getFreshGitHubFileMeta(apiBase, branch, headers) {
+      const url = `${apiBase}?ref=${encodeURIComponent(branch)}&_=${Date.now()}-${Math.random().toString(36).slice(2)}`;
+      const res = await fetchWithFastTimeout(url, {
+        method: "GET",
+        headers,
+        cache: "no-store"
+      }, 10000);
+      if (res.status === 404) return null;
+      if (!res.ok) {
+        const text = await res.text().catch(() => "");
+        throw new Error(`تعذر قراءة أحدث نسخة من GitHub (${res.status}) ${text}`);
+      }
+      return await res.json();
+    }
+    function mergeChannelDataAfterShaConflict(pendingText, remoteBase64) {
+      const remoteText = decodeURIComponent(escape(atob(String(remoteBase64 || "").replace(/\s/g, ""))));
+      const remote = JSON.parse(remoteText);
+      const pending = JSON.parse(pendingText);
+      const merged = { ...remote, ...pending };
+      const criticalRemoteKeys = [
+        "streamType", "streamKey", "youtubeUrl", "youtubeVideoId", "youtubeActiveIndex",
+        "youtubePlaybackOrder", "youtubeStrictTvMode", "uploadedActiveIndex", "uploadPlaybackOrder",
+        "loopUploadedVideo"
+      ];
+      criticalRemoteKeys.forEach(key => {
+        if (Object.prototype.hasOwnProperty.call(remote, key)) merged[key] = remote[key];
+      });
+      const mergePlaylist = (key) => {
+        const remoteList = Array.isArray(remote[key]) ? remote[key] : [];
+        const pendingList = Array.isArray(pending[key]) ? pending[key] : [];
+        const byId = new Map();
+        const anonymous = [];
+        remoteList.forEach((item, idx) => {
+          if (!item) return;
+          const id = item.id == null ? `remote_${idx}` : String(item.id);
+          byId.set(id, { ...item });
+          if (item.id == null) anonymous.push(id);
+        });
+        pendingList.forEach((item, idx) => {
+          if (!item) return;
+          const id = item.id == null ? `pending_${idx}` : String(item.id);
+          const old = byId.get(id);
+          if (!old) { byId.set(id, { ...item }); return; }
+          const combined = { ...old, ...item };
+          const remoteUrl = String(old.url || "");
+          const pendingUrl = String(item.url || "");
+          const remoteHasRepoFile = !!old.repoPath && !remoteUrl.toLowerCase().includes("tmpfiles.org/");
+          const pendingHasRepoFile = !!item.repoPath && !pendingUrl.toLowerCase().includes("tmpfiles.org/");
+          if (remoteHasRepoFile && !pendingHasRepoFile) {
+            combined.url = old.url;
+            combined.repoPath = old.repoPath;
+            combined.fallbackUrls = old.fallbackUrls || [old.url];
+          }
+          byId.set(id, combined);
+        });
+        merged[key] = Array.from(byId.values());
+      };
+      mergePlaylist("uploadedVideosPlaylist");
+      mergePlaylist("youtubePlaylist");
+      const activeIndex = Number(merged.uploadedActiveIndex || 0);
+      const activeUploaded = merged.uploadedVideosPlaylist[activeIndex];
+      if (activeUploaded) {
+        merged.uploadedVideoUrl = activeUploaded.url || merged.uploadedVideoUrl || "";
+        merged.uploadedVideoName = activeUploaded.name || merged.uploadedVideoName || "";
+      }
+      merged.updatedAt = new Date().toISOString();
+      return JSON.stringify(merged, null, 2);
+    }
     async function githubPutFile(repo, branch, path, contentText, commitMessage, token) {
       const cleanToken = (token || "").trim().replace(/^Bearer\s+/i, "").replace(/^token\s+/i, "");
       const apiBase = `https://api.github.com/repos/${repo}/contents/${path}`;
@@ -3892,30 +3960,25 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28"
       };
-
-      let existingSha = null;
-      try {
-        const getRes = await fetchWithFastTimeout(`${apiBase}?ref=${encodeURIComponent(branch)}`, { method: "GET", headers }, 8000);
-        if (getRes.ok) {
-          const fileMeta = await getRes.json();
-          if (fileMeta && fileMeta.sha) existingSha = fileMeta.sha;
+      let pendingContent = contentText;
+      let recoveredConflict = false;
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const fileMeta = await getFreshGitHubFileMeta(apiBase, branch, headers);
+        const bodyPayload = {
+          message: commitMessage,
+          content: utf8ToBase64(pendingContent),
+          branch
+        };
+        if (fileMeta && fileMeta.sha) bodyPayload.sha = fileMeta.sha;
+        const putRes = await fetchWithFastTimeout(apiBase, {
+          method: "PUT",
+          headers: { ...headers, "Content-Type": "application/json" },
+          body: JSON.stringify(bodyPayload)
+        }, 20000);
+        if (putRes.ok) {
+          if (recoveredConflict) showToast("✅ تم تحديث نسخة GitHub الأحدث ودمج قائمة الفيديوهات لتجاوز تعارض الحفظ.");
+          return await putRes.json();
         }
-      } catch (e) {}
-
-      const bodyPayload = {
-        message: commitMessage,
-        content: utf8ToBase64(contentText),
-        branch: branch
-      };
-      if (existingSha) bodyPayload.sha = existingSha;
-
-      const putRes = await fetchWithFastTimeout(apiBase, {
-        method: "PUT",
-        headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify(bodyPayload)
-      }, 15000);
-
-      if (!putRes.ok) {
         let errDetail = `${putRes.status}`;
         try {
           const errJson = await putRes.json();
@@ -3924,13 +3987,29 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
         if (putRes.status === 401 || String(errDetail).toLowerCase().includes("bad credentials")) {
           const alertBox = document.getElementById("ghBadCredsAlertBox");
           if (alertBox) alertBox.classList.remove("hidden");
-          throw new Error("رمز GitHub القديم منتهي (Bad credentials). اضغط (+ استخراج رمز جديد) أعلى الصفحة.");
+          throw new Error("رمز GitHub غير صالح أو منتهي. أدخل رمزاً جديداً في خانة GitHub.");
         }
-        throw new Error(`فشل رفع الملف ${path}: ${errDetail}`);
+        const isShaConflict = putRes.status === 409 || (putRes.status === 422 && /sha|does not match|already exists/i.test(String(errDetail)));
+        if (!isShaConflict || attempt === 2) {
+          if (isShaConflict) throw new Error(`تغيرت نسخة ${path} في GitHub عدة مرات أثناء الحفظ. أعد تحميل لوحة التحكم ثم أعد المحاولة.`);
+          throw new Error(`فشل رفع الملف ${path}: ${errDetail}`);
+        }
+        recoveredConflict = true;
+        if (path === "channel-data.json") {
+          try {
+            const latestMeta = await getFreshGitHubFileMeta(apiBase, branch, headers);
+            if (latestMeta && latestMeta.content) {
+              pendingContent = mergeChannelDataAfterShaConflict(pendingContent, latestMeta.content);
+              try { Object.assign(channelState, JSON.parse(pendingContent)); saveStateToStorage(); renderAllUI(); } catch (e) {}
+            }
+          } catch (mergeError) {
+            throw new Error("تعارضت بيانات القناة مع تحديث أحدث؛ لم أستبدلها. أعد تحميل لوحة التحكم وحاول مجدداً.");
+          }
+        }
+        await new Promise(resolve => setTimeout(resolve, 300 * (attempt + 1)));
       }
-      return await putRes.json();
+      throw new Error(`تعذر تحديث ${path} بعد إعادة المحاولة.`);
     }
-
     async function githubPutBase64File(repo, branch, path, base64Content, commitMessage, token) {
       const cleanToken = (token || "").trim().replace(/^Bearer\s+/i, "").replace(/^token\s+/i, "");
       const apiBase = `https://api.github.com/repos/${repo}/contents/${path}`;
@@ -3939,44 +4018,38 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
         "Accept": "application/vnd.github+json",
         "X-GitHub-Api-Version": "2022-11-28"
       };
-
-      let existingSha = null;
-      try {
-        const getRes = await fetchWithFastTimeout(`${apiBase}?ref=${encodeURIComponent(branch)}`, { method: "GET", headers }, 8000);
-        if (getRes.ok) {
-          const fileMeta = await getRes.json();
-          if (fileMeta && fileMeta.sha) existingSha = fileMeta.sha;
-        }
-      } catch (e) {}
-
-      const bodyPayload = {
-        message: commitMessage,
-        content: base64Content,
-        branch: branch
-      };
-      if (existingSha) bodyPayload.sha = existingSha;
-
-      const putRes = await fetchWithFastTimeout(apiBase, {
-        method: "PUT",
-        headers: { ...headers, "Content-Type": "application/json" },
-        body: JSON.stringify(bodyPayload)
-      }, 30000);
-
-      if (!putRes.ok) {
+      for (let attempt = 0; attempt < 3; attempt++) {
+        const fileMeta = await getFreshGitHubFileMeta(apiBase, branch, headers);
+        const payload = { message: commitMessage, content: base64Content, branch };
+        if (fileMeta && fileMeta.sha) payload.sha = fileMeta.sha;
+        const putRes = await fetchWithFastTimeout(apiBase, {
+          method: "PUT",
+          headers: { ...headers, "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        }, 40000);
+        if (putRes.ok) return await putRes.json();
         let errDetail = `${putRes.status}`;
-        try {
-          const errJson = await putRes.json();
-          errDetail = errJson.message || errDetail;
-        } catch (e) {}
+        try { const errJson = await putRes.json(); errDetail = errJson.message || errDetail; } catch (e) {}
         if (putRes.status === 401 || String(errDetail).toLowerCase().includes("bad credentials")) {
           const alertBox = document.getElementById("ghBadCredsAlertBox");
           if (alertBox) alertBox.classList.remove("hidden");
+          throw new Error("رمز GitHub غير صالح أو منتهي. أدخل رمزاً جديداً في خانة GitHub.");
         }
+        const isShaConflict = putRes.status === 409 || (putRes.status === 422 && /sha|does not match|already exists/i.test(String(errDetail)));
+        if (isShaConflict && attempt < 2) {
+          await new Promise(resolve => setTimeout(resolve, 300 * (attempt + 1)));
+          continue;
+        }
+        if (isShaConflict) throw new Error(`تغير ملف الفيديو ${path} في GitHub أثناء الرفع. أعد تحميل اللوحة ثم أعد المحاولة.`);
         throw new Error(`فشل رفع ملف الفيديو (${path}): ${errDetail}`);
       }
-      return await putRes.json();
     }
-
+    async function isGitHubVideoFilePresent(repo, branch, path, token) {
+      if (!path || !token) return false;
+      const cleanToken = (token || "").trim().replace(/^Bearer\s+/i, "").replace(/^token\s+/i, "");
+      const headers = { "Authorization": `token ${cleanToken}`, "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28" };
+      return !!(await getFreshGitHubFileMeta(`https://api.github.com/repos/${repo}/contents/${path}`, branch, headers));
+    }
     async function purgeAllRepositoryVideosAndReset() {
       const { repo, branch, token } = getGitHubCredentials();
 
@@ -5426,36 +5499,33 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           const item = list[i];
           const localBlob = localVideoFilesMap.get(String(item.id));
           const hasKnownBadTmpfilesUrl = (item.url || "").toLowerCase().includes("tmpfiles.org/");
-          if (localBlob && (!item.url || item.url.startsWith("blob:") || hasKnownBadTmpfilesUrl)) {
+          const hasRepoMediaPath = (item.repoPath || "").startsWith("media/");
+          let repoFileExists = !hasRepoMediaPath;
+          if (hasRepoMediaPath && token) {
+            try { repoFileExists = await isGitHubVideoFilePresent(repo, branch, item.repoPath, token); }
+            catch (e) { repoFileExists = false; }
+          }
+          const needsUpload = !item.url || item.url.startsWith("blob:") || hasKnownBadTmpfilesUrl || (hasRepoMediaPath && !repoFileExists);
+          if (localBlob && needsUpload) {
             btn.innerHTML = `<span>⏳ رفع الفيديو (${i + 1}/${list.length})...</span>`;
-            // First try CORS-Enabled Cloud CDN (works even if GitHub token is expired)
-            const directCloudUrl = await uploadVideoToTokenFreeCloud(localBlob, null, null);
-            if (directCloudUrl) {
-              item.repoPath = "";
-              item.url = directCloudUrl;
-              item.fallbackUrls = [directCloudUrl];
-              uploadedCount++;
-            } else if (token) {
+            if (token) {
               const buffer = await localBlob.arrayBuffer();
               const base64Content = arrayBufferToBase64(buffer);
               const safeExt = ((item.name || "mp4").split(".").pop() || "mp4").toLowerCase().replace(/[^a-z0-9]/g, "") || "mp4";
               const targetPath = item.repoPath || `media/video-${Date.now()}-${i + 1}.${safeExt}`;
-
               await githubPutBase64File(repo, branch, targetPath, base64Content, `رفع فيديو ${item.name}`, token);
               const fallbacks = buildVideoFallbackUrls(repo, branch, targetPath, "");
-              item.repoPath = targetPath;
-              item.url = fallbacks[0];
-              item.fallbackUrls = fallbacks;
+              item.repoPath = targetPath; item.url = fallbacks[0]; item.fallbackUrls = fallbacks;
               uploadedCount++;
+            } else {
+              const directCloudUrl = await uploadVideoToTokenFreeCloud(localBlob, null, null);
+              if (directCloudUrl) { item.repoPath = ""; item.url = directCloudUrl; item.fallbackUrls = [directCloudUrl]; uploadedCount++; }
             }
-          } else if (item.repoPath || (item.url && !item.url.startsWith("blob:") && !hasKnownBadTmpfilesUrl)) {
+          } else if ((!hasRepoMediaPath || repoFileExists) && (item.repoPath || (item.url && !item.url.startsWith("blob:") && !hasKnownBadTmpfilesUrl))) {
             const fallbacks = buildVideoFallbackUrls(repo, branch, item.repoPath || item.url, item.url);
-            item.url = fallbacks[0];
-            item.fallbackUrls = fallbacks;
-            uploadedCount++;
+            item.url = fallbacks[0]; item.fallbackUrls = fallbacks; uploadedCount++;
           }
         }
-
         channelState.streamType = "upload";
         channelState.liveStatus = "live";
         saveStateToStorage();
