@@ -1131,7 +1131,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
         </div>
 
         <!-- Published Live URLs Box (Appears after successful push) -->
-        <div id="ghPublishedLinksBox" class="hidden p-4 rounded-2xl bg-emerald-950/80 border-2 border-[#DFBE73] space-y-3">
+        <div id="ghPublishedLinksBox" class="p-4 rounded-2xl bg-emerald-950/80 border-2 border-[#DFBE73] space-y-3 hidden">
           <div class="flex flex-wrap items-center justify-between gap-2">
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-emerald-400 live-dot-pulse"></span>
@@ -1147,9 +1147,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div class="p-3 rounded-xl bg-white/10 border border-[#DFBE73]/40 flex flex-col justify-between gap-2">
               <div>
                 <span class="text-[11px] text-[#DFBE73] font-bold block">📺 1. رابط موقع المشاهدين العام (بدون لوحة تحكم):</span>
-                <a id="linkPublicSite" href="https://yaseenyaseen123.github.io/hamsa/" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">
-                  https://yaseenyaseen123.github.io/hamsa/
-                </a>
+                <a id="linkPublicSite" href="https://yaseenyaseen123.github.io/hamsa/" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">https://yaseenyaseen123.github.io/hamsa/</a>
               </div>
               <div class="flex items-center gap-2 pt-1">
                 <a id="btnOpenPublicSite" href="https://yaseenyaseen123.github.io/hamsa/" target="_blank" rel="noopener" class="px-3 py-1 rounded-lg bg-[#C49A45] text-[#143B2D] font-bold">فتح الموقع ↗</a>
@@ -1161,9 +1159,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div class="p-3 rounded-xl bg-white/10 border border-[#DFBE73]/40 flex flex-col justify-between gap-2">
               <div>
                 <span class="text-[11px] text-[#DFBE73] font-bold block">🔒 2. رابط لوحة التحكم المستقلة (للإدارة فقط):</span>
-                <a id="linkAdminSite" href="https://yaseenyaseen123.github.io/hamsa/admin.html" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">
-                  https://yaseenyaseen123.github.io/hamsa/admin.html
-                </a>
+                <a id="linkAdminSite" href="https://yaseenyaseen123.github.io/hamsa/admin.html" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">https://yaseenyaseen123.github.io/hamsa/admin.html</a>
               </div>
               <div class="flex items-center gap-2 pt-1">
                 <a id="btnOpenAdminSite" href="https://yaseenyaseen123.github.io/hamsa/admin.html" target="_blank" rel="noopener" class="px-3 py-1 rounded-lg bg-[#C49A45] text-[#143B2D] font-bold">فتح لوحة التحكم ↗</a>
@@ -1175,9 +1171,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div class="p-3 rounded-xl bg-white/10 border border-[#DFBE73]/40 flex flex-col justify-between gap-2">
               <div>
                 <span class="text-[11px] text-[#DFBE73] font-bold block">🗂️ 3. ملفات المستودع على GitHub:</span>
-                <a id="linkRepoFiles" href="https://github.com/yaseenyaseen123/hamsa" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">
-                  https://github.com/yaseenyaseen123/hamsa
-                </a>
+                <a id="linkRepoFiles" href="https://github.com/yaseenyaseen123/hamsa" target="_blank" rel="noopener" dir="ltr" class="font-mono text-xs text-white hover:underline break-all block mt-1">https://github.com/yaseenyaseen123/hamsa</a>
               </div>
               <div class="flex items-center gap-2 pt-1">
                 <a id="btnOpenRepoFiles" href="https://github.com/yaseenyaseen123/hamsa" target="_blank" rel="noopener" class="px-3 py-1 rounded-lg bg-white/20 text-white font-bold">استعراض الملفات ↗</a>
@@ -1194,7 +1188,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ===================================================================== -->
   <!-- 1. PUBLIC VIEWER WEBSITE (واجهة المشاهدين فقط - بدون أي لوحة تحكم أو رابط M3U8) -->
   <!-- ===================================================================== -->
-  <div id="publicViewerApp" class="min-h-screen flex flex-col justify-between">
+  <div id="publicViewerApp" class="min-h-screen flex flex-col justify-between hidden">
 
     <!-- ================= HEADER (Clean Viewer-Only Header) ================= -->
     <header class="sticky top-0 z-30 backdrop-blur-md bg-[#FBF9F5]/92 border-b border-[#E4DBC7] shadow-sm">
@@ -1271,7 +1265,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <svg class="w-3.5 h-3.5 text-[#C49A45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <span id="headerClock">٠٩:٣٧ ص</span>
+            <span id="headerClock">٠٩:٥٨ ص</span>
           </div>
         </div>
 
@@ -1310,7 +1304,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div id="playerContainer" class="player-viewport aspect-video w-full rounded-2xl relative select-none shadow-inner border border-[#C49A45]/30">
               
               <!-- HTML5 Video Element (For M3U8 Streams & Uploaded Videos Playlist) -->
-              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" loop="" src="blob:https://yaseenyaseen123.github.io/8c685e08-521e-4288-bec4-d4ad004a284b"></video>
+              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" src="blob:https://yaseenyaseen123.github.io/4582b6c0-16c9-4aef-ada1-f94bae979a42"></video>
 
               <!-- YouTube TV Broadcast Wrapper (Hides YouTube Chrome & Blocks Seeking/Pausing) -->
               <div id="youtubeTvBroadcastWrapper" class="hidden absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#112E23]">
@@ -1347,7 +1341,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               </div>
 
               <!-- Standby / Reconnect Overlay (Viewer-safe, zero URL exposure) -->
-              <div id="playerStateOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#143B2D]/95 to-[#112E23]/98 text-[#FBF9F5] p-6 text-center hidden">
+              <div id="playerStateOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#143B2D]/95 to-[#112E23]/98 text-[#FBF9F5] p-6 text-center">
                 <div class="w-16 h-16 mb-3 rounded-2xl flex items-center justify-center border border-[#C49A45] bg-[#1E5240]/60 shadow-lg">
                   <span class="font-amiri text-2xl font-bold text-[#DFBE73]">هـ ي</span>
                 </div>
@@ -1404,13 +1398,13 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               <!-- Center Stream Status Text -->
               <div class="hidden md:flex items-center gap-2 text-xs text-[#F3EFE6]/90">
                 <span class="w-2 h-2 rounded-full bg-[#DFBE73]"></span>
-                <span id="playerStatusText">البث الرسمي المباشر • قناة همسة ياسين</span>
+                <span id="playerStatusText">جاري الاتصال بالبث المباشر...</span>
               </div>
 
               <!-- Left Side Controls (Quality Selector, PiP, Fullscreen) -->
               <div class="flex items-center gap-2">
                 <!-- HLS Quality Selector -->
-                <select id="qualitySelector" onchange="changeQualityLevel(this.value)" class="bg-white/10 border border-[#C49A45]/50 text-[#FBF9F5] text-xs font-bold rounded-xl px-2.5 py-1.5 focus:outline-none cursor-pointer"><option value="-1" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: تلقائي</option><option value="0" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 184p</option><option value="1" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 288p</option><option value="2" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 480p</option><option value="3" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 720p</option><option value="4" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 1080p</option></select>
+                <select id="qualitySelector" onchange="changeQualityLevel(this.value)" class="bg-white/10 border border-[#C49A45]/50 text-[#FBF9F5] text-xs font-bold rounded-xl px-2.5 py-1.5 focus:outline-none cursor-pointer"><option value="-1" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: تلقائي</option></select>
 
                 <!-- Picture in Picture -->
                 <button onclick="togglePiP()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-[#DFBE73] transition-all" title="نافذة عائمة (صورة داخل صورة)">
@@ -1665,7 +1659,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ===================================================================== -->
   <!-- 3. SEPARATED FULL-PAGE ADMIN CONTROL ROOM (لوحة التحكم المفصولة بالكامل) -->
   <!-- ===================================================================== -->
-  <div id="adminDashboardPortal" class="min-h-screen flex flex-col justify-between hidden">
+  <div id="adminDashboardPortal" class="min-h-screen flex flex-col justify-between">
     
     <!-- Admin Portal Header -->
     <header class="sticky top-0 z-40 shadow-md border-b" style="background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-secondary) 100%); border-color: var(--accent-gold); color: #FBF9F5;">
@@ -1751,13 +1745,13 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           </div>
 
           <div class="flex flex-wrap items-center gap-2">
-            <button type="button" onclick="activateStreamSourceMode('m3u8')" id="modeBtn-m3u8" class="px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5" style="background-color: var(--surface-card); color: var(--brand-primary); border-color: var(--border-warm);">
+            <button type="button" onclick="activateStreamSourceMode('m3u8')" id="modeBtn-m3u8" class="px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5" style="background-color: var(--brand-primary); color: rgb(251, 249, 245); border-color: var(--accent-gold);">
               <span>📡 بث مباشر M3U8</span>
             </button>
             <button type="button" onclick="activateStreamSourceMode('youtube')" id="modeBtn-youtube" class="px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5" style="background-color: var(--surface-card); color: var(--brand-primary); border-color: var(--border-warm);">
               <span>▶️ قائمة بث يوتيوب التلفزيوني</span>
             </button>
-            <button type="button" onclick="activateStreamSourceMode('upload')" id="modeBtn-upload" class="px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5" style="background-color: var(--brand-primary); color: rgb(251, 249, 245); border-color: var(--accent-gold);">
+            <button type="button" onclick="activateStreamSourceMode('upload')" id="modeBtn-upload" class="px-4 py-2 rounded-xl text-xs font-bold border transition-all flex items-center gap-1.5" style="background-color: var(--surface-card); color: var(--brand-primary); border-color: var(--border-warm);">
               <span>🎬 قائمة الفيديوهات المرفوعة</span>
             </button>
           </div>
@@ -1888,19 +1882,19 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               </div>
             </div>
 
-            <div id="uploadedPlaylistContainer" class="space-y-2 max-h-72 overflow-y-auto pr-1"><div class="p-3 rounded-xl border flex flex-wrap items-center justify-between gap-2 transition-all" style="background-color: var(--accent-gold-Pale); border-color: var(--accent-gold);">
+            <div id="uploadedPlaylistContainer" class="space-y-2 max-h-72 overflow-y-auto pr-1"><div class="p-3 rounded-xl border flex flex-wrap items-center justify-between gap-2 transition-all" style="background-color: var(--surface-card); border-color: var(--border-warm);">
           <div class="flex items-center gap-2.5 min-w-0 flex-1">
-            <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0" style="background-color: var(--brand-primary); color: #FBF9F5;">1</span>
+            <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0" style="background-color: var(--bg-secondary); color: var(--brand-primary);">1</span>
             <div class="min-w-0 flex-1">
               <div class="flex flex-wrap items-center gap-1.5">
                 <p class="text-xs sm:text-sm font-bold truncate" style="color: var(--brand-primary);">video_Qp2kojGBJrY_1793439381_7724.mp4</p>
-                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-700 text-white">يُبث الآن</span>
+                
                 <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-800">مرفوع سحابياً</span>
               </div>
             </div>
           </div>
           <div class="flex items-center gap-1.5 flex-shrink-0">
-            <button type="button" onclick="playSpecificUploadedItem(0)" class="px-2.5 py-1 rounded-lg text-xs font-bold border transition-all" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">✓ يعرض</button>
+            <button type="button" onclick="playSpecificUploadedItem(0)" class="px-2.5 py-1 rounded-lg text-xs font-bold border transition-all" style="background-color: var(--bg-primary); color: var(--brand-primary); border-color: var(--accent-gold);">بث</button>
             <button type="button" onclick="moveUploadedPlaylistItem(0, -1)" disabled="" class="p-1.5 rounded-lg border text-xs disabled:opacity-30">⬆️</button>
             <button type="button" onclick="moveUploadedPlaylistItem(0, 1)" disabled="" class="p-1.5 rounded-lg border text-xs disabled:opacity-30">⬇️</button>
             <button type="button" onclick="removeUploadedPlaylistItem(0)" class="p-1.5 rounded-lg text-red-800">🗑️</button>
@@ -2199,7 +2193,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
                   معاينة الأخبار المسحوبة حالياً من الـ RSS
                 </h4>
               </div>
-              <span id="rssLastUpdatedLabel" class="text-[11px]" style="color: var(--text-muted);">متصل بنجاح (10 خبراً) • آخر تحديث: ٠٩:٣٥ ص</span>
+              <span id="rssLastUpdatedLabel" class="text-[11px]" style="color: var(--text-muted);">متصل بنجاح (10 خبراً) • آخر تحديث: ٠٩:٥٨ ص</span>
             </div>
 
             <div id="rssPreviewItemsContainer" class="max-h-52 overflow-y-auto space-y-1.5 pr-1"><div class="px-3 py-2 rounded-xl border text-xs flex items-center gap-2.5" style="background-color: var(--bg-primary); border-color: var(--border-warm);">
@@ -2473,7 +2467,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ================= TOAST NOTIFICATION ================= -->
   <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform pointer-events-none transition-all duration-300 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border translate-y-20 opacity-0" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">
     <span class="w-2.5 h-2.5 rounded-full bg-[#DFBE73]"></span>
-    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">🎬 يُعرض الآن: video_Qp2kojGBJrY_1793439381_7724.mp4</span>
+    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">✅ تم حفظ ومزامنة تعديلات البث مع موقع المشاهدين بنجاح!</span>
   </div>
 
   <!-- ================= APPLICATION JAVASCRIPT ================= -->
