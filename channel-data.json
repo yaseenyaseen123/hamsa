@@ -10,16 +10,18 @@
   "youtubeActiveIndex": 0,
   "youtubePlaybackOrder": "sequential",
   "youtubeStrictTvMode": true,
-  "uploadedVideoUrl": "https://tmpfiles.org/dl/wyAKTTxveayl/video_qp2kojgbjry_1793439381_7724.mp4",
+  "uploadedVideoUrl": "https://raw.githubusercontent.com/yaseenyaseen123/hamsa/main/media/video_Qp2kojGBJrY_1793439381_7724.mp4",
   "uploadedVideoName": "video_Qp2kojGBJrY_1793439381_7724.mp4",
   "uploadedVideosPlaylist": [
     {
       "id": "vid_1793517143831_41pq",
       "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
-      "repoPath": "",
-      "url": "https://tmpfiles.org/dl/wyAKTTxveayl/video_qp2kojgbjry_1793439381_7724.mp4",
+      "repoPath": "media/video_Qp2kojGBJrY_1793439381_7724.mp4",
+      "url": "https://raw.githubusercontent.com/yaseenyaseen123/hamsa/main/media/video_Qp2kojGBJrY_1793439381_7724.mp4",
       "fallbackUrls": [
-        "https://tmpfiles.org/dl/wyAKTTxveayl/video_qp2kojgbjry_1793439381_7724.mp4"
+        "https://raw.githubusercontent.com/yaseenyaseen123/hamsa/main/media/video_Qp2kojGBJrY_1793439381_7724.mp4",
+        "https://cdn.jsdelivr.net/gh/yaseenyaseen123/hamsa@main/media/video_Qp2kojGBJrY_1793439381_7724.mp4",
+        "https://yaseenyaseen123.github.io/hamsa/media/video_Qp2kojGBJrY_1793439381_7724.mp4"
       ]
     }
   ],
@@ -73,5 +75,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-11-01T07:34:40.977Z"
+  "updatedAt": "2026-11-01T07:50:50Z"
 }
