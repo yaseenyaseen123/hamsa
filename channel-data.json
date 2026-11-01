@@ -34,6 +34,17 @@
         "https://cdn.jsdelivr.net/gh/yaseenyaseen123/hamsa@main/media/video-1793519961077-1.mp4",
         "https://yaseenyaseen123.github.io/hamsa/media/video-1793519961077-1.mp4"
       ]
+    },
+    {
+      "id": "vid_1793522702117_25zb",
+      "name": "video_Dhj8ocmDoGI_1793448951_1038.mp4",
+      "repoPath": "media/video-1793522702153-1.mp4",
+      "url": "https://raw.githubusercontent.com/yaseenyaseen123/hamsa/main/media/video-1793522702153-1.mp4",
+      "fallbackUrls": [
+        "https://raw.githubusercontent.com/yaseenyaseen123/hamsa/main/media/video-1793522702153-1.mp4",
+        "https://cdn.jsdelivr.net/gh/yaseenyaseen123/hamsa@main/media/video-1793522702153-1.mp4",
+        "https://yaseenyaseen123.github.io/hamsa/media/video-1793522702153-1.mp4"
+      ]
     }
   ],
   "uploadedActiveIndex": 1,
@@ -86,5 +97,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-11-01T08:44:10.110Z"
+  "updatedAt": "2026-11-01T10:20:31.796Z"
 }
