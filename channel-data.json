@@ -10,29 +10,20 @@
   "youtubeActiveIndex": 0,
   "youtubePlaybackOrder": "sequential",
   "youtubeStrictTvMode": true,
-  "uploadedVideoUrl": "https://tmpfiles.org/dl/wzAwT0NlQybW/video_qp2kojgbjry_1793439381_7724.mp4",
+  "uploadedVideoUrl": "https://tmpfiles.org/dl/wyAKTTxveayl/video_qp2kojgbjry_1793439381_7724.mp4",
   "uploadedVideoName": "video_Qp2kojGBJrY_1793439381_7724.mp4",
   "uploadedVideosPlaylist": [
     {
-      "id": "vid_1793514979759_q7nw",
+      "id": "vid_1793517143831_41pq",
       "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
       "repoPath": "",
-      "url": "https://tmpfiles.org/dl/wzAwT0NlQybW/video_qp2kojgbjry_1793439381_7724.mp4",
+      "url": "https://tmpfiles.org/dl/wyAKTTxveayl/video_qp2kojgbjry_1793439381_7724.mp4",
       "fallbackUrls": [
-        "https://tmpfiles.org/dl/wzAwT0NlQybW/video_qp2kojgbjry_1793439381_7724.mp4"
-      ]
-    },
-    {
-      "id": "vid_1793516376116_6934",
-      "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
-      "repoPath": "",
-      "url": "https://tmpfiles.org/dl/wQAbTMNMmoEN/video_qp2kojgbjry_1793439381_7724.mp4",
-      "fallbackUrls": [
-        "https://tmpfiles.org/dl/wQAbTMNMmoEN/video_qp2kojgbjry_1793439381_7724.mp4"
+        "https://tmpfiles.org/dl/wyAKTTxveayl/video_qp2kojgbjry_1793439381_7724.mp4"
       ]
     }
   ],
-  "uploadedActiveIndex": 1,
+  "uploadedActiveIndex": 0,
   "uploadPlaybackOrder": "sequential",
   "loopUploadedVideo": true,
   "liveStatus": "live",
@@ -82,5 +73,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-11-01T06:59:41.630Z"
+  "updatedAt": "2026-11-01T07:12:27.826Z"
 }
