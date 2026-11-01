@@ -2,7 +2,7 @@
   "channelName": "همسة ياسين",
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
   "theme": "emerald",
-  "streamType": "m3u8",
+  "streamType": "upload",
   "streamKey": "aHR0cHM6Ly90ZXN0LXN0cmVhbXMubXV4LmRldi94MzZ4aHp6L3gzNnhoenoubTN1OA==",
   "youtubeUrl": "",
   "youtubeVideoId": "",
@@ -10,9 +10,19 @@
   "youtubeActiveIndex": 0,
   "youtubePlaybackOrder": "sequential",
   "youtubeStrictTvMode": true,
-  "uploadedVideoUrl": "",
-  "uploadedVideoName": "",
-  "uploadedVideosPlaylist": [],
+  "uploadedVideoUrl": "https://tmpfiles.org/dl/wAAJTyNwy8r0/video_qp2kojgbjry_1793439381_7724.mp4",
+  "uploadedVideoName": "video_Qp2kojGBJrY_1793439381_7724.mp4",
+  "uploadedVideosPlaylist": [
+    {
+      "id": "vid_1793514223022_omca",
+      "name": "video_Qp2kojGBJrY_1793439381_7724.mp4",
+      "repoPath": "",
+      "url": "https://tmpfiles.org/dl/wAAJTyNwy8r0/video_qp2kojgbjry_1793439381_7724.mp4",
+      "fallbackUrls": [
+        "https://tmpfiles.org/dl/wAAJTyNwy8r0/video_qp2kojgbjry_1793439381_7724.mp4"
+      ]
+    }
+  ],
   "uploadedActiveIndex": 0,
   "uploadPlaybackOrder": "sequential",
   "loopUploadedVideo": true,
@@ -63,5 +73,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-11-01T06:23:07.931Z"
+  "updatedAt": "2026-11-01T06:23:47.571Z"
 }
