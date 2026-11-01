@@ -1161,7 +1161,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
                   <span class="font-amiri text-2xl font-bold text-[#DFBE73]">هـ ي</span>
                 </div>
                 <h3 id="overlayTitle" class="font-amiri text-2xl sm:text-3xl font-bold text-[#DFBE73] mb-2">قائمة بث القناة</h3>
-                <p id="overlayMessage" class="text-xs sm:text-sm text-[#F3EFE6]/90 max-w-md mb-5 leading-relaxed">يرجى إضافة رابط فيديو أو أكثر في قائمة البث التلفزيوني من يوتيوب.</p>
+                <p id="overlayMessage" class="text-xs sm:text-sm text-[#F3EFE6]/90 max-w-md mb-5 leading-relaxed">لا يوجد مصدر فيديو صالح حالياً. أضف فيديو أو تحقّق من رابط المصدر المحدد.</p>
                 <div class="flex flex-wrap items-center justify-center gap-2.5">
                   <button onclick="reloadCurrentStream()" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#C49A45] text-[#143B2D] hover:bg-[#DFBE73] transition-all shadow-md flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1582,7 +1582,9 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             }
           } catch (e) {}
 
-          // 2. Check GitHub Raw & Local channel-data.json
+          // Prefer live KV written by the admin; Pages/raw JSON can be stale.
+          if (bestData) return bestData;
+          // Fallback to GitHub Raw & Local channel-data.json only when KV is unavailable.
           const endpoints = [
             "https://raw.githubusercontent.com/" + GH_REPO + "/" + GH_BRANCH + "/channel-data.json?t=" + ts,
             "./channel-data.json?t=" + ts
@@ -1666,7 +1668,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
 
         function pickNextIndex(currentIndex, length, orderMode) {
           if (length <= 1) return 0;
-          if (orderMode === "random") {
+          if (orderMode === "random" || orderMode === "shuffle") {
             let next = currentIndex;
             for (let tries = 0; tries < 6; tries++) {
               next = Math.floor(Math.random() * length);
@@ -1681,9 +1683,10 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           if (!item) return [];
           const list = [];
           if (Array.isArray(item.fallbackUrls)) {
-            item.fallbackUrls.forEach(u => { if (u && !u.startsWith("blob:") && !list.includes(u)) list.push(u); });
+            item.fallbackUrls.forEach(u => { if (u && !u.startsWith("blob:") && !u.toLowerCase().includes("tmpfiles.org/") && !list.includes(u)) list.push(u); });
           }
           const rawUrl = (item.url || "").trim();
+          if (rawUrl.toLowerCase().includes("tmpfiles.org/")) return [];
           const repoPath = (item.repoPath || rawUrl).replace(/^\.\//, "").replace(/^\//, "");
           const [owner, repoShort] = GH_REPO.split("/");
           if (repoPath && repoPath.startsWith("media/")) {
@@ -1709,8 +1712,14 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           const stateOverlay = document.getElementById("playerStateOverlay");
           const candidates = getCandidateUrlsForUploadedItem(item);
           if (candidates.length === 0) {
-            // Fallback to default HLS stream instead of blocking screen
-            initHlsPlayer(decodeStreamKey(channelState.streamKey), true);
+            video.pause();
+            video.removeAttribute("src");
+            video.load();
+            stateOverlay.classList.remove("hidden");
+            const title = document.getElementById("overlayTitle");
+            const detail = document.getElementById("overlayMessage");
+            if (title) title.textContent = "تعذر تشغيل الفيديو";
+            if (detail) detail.textContent = "رابط الفيديو ليس ملفاً مباشراً. أعد رفع الفيديو أو استخدم رابط MP4 صالحاً.";
             return;
           }
           stateOverlay.classList.add("hidden");
@@ -1724,7 +1733,14 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               if (list.length > 1) {
                 advanceViewerUploadedVideo();
               } else {
-                initHlsPlayer(decodeStreamKey(channelState.streamKey), true);
+                video.pause();
+                video.removeAttribute("src");
+                video.load();
+                stateOverlay.classList.remove("hidden");
+                const title = document.getElementById("overlayTitle");
+                const detail = document.getElementById("overlayMessage");
+                if (title) title.textContent = "تعذر تشغيل الفيديو";
+                if (detail) detail.textContent = "انتهت محاولات تشغيل الفيديو. أعد رفعه أو استبدل رابطه برابط MP4 مباشر.";
               }
               return;
             }
@@ -1836,6 +1852,8 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           if (mode === "youtube") {
             video.pause();
             video.removeAttribute("src");
+            video.load();
+            video.removeAttribute("src");
             video.classList.add("hidden");
             loadingOverlay.classList.add("hidden");
 
@@ -1896,6 +1914,8 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           }
 
           if (mode === "upload") {
+            video.pause();
+            if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null; }
             ytWrapper.classList.add("hidden");
             ytIframe.src = "";
             video.classList.remove("hidden");
@@ -1906,7 +1926,14 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               list = [{ id: "up_1", name: channelState.uploadedVideoName || "بث القناة", url: channelState.uploadedVideoUrl }];
             }
             if (list.length === 0) {
-              initHlsPlayer(decodeStreamKey(channelState.streamKey), shouldAutoPlay);
+              video.pause();
+              video.removeAttribute("src");
+              video.load();
+              stateOverlay.classList.remove("hidden");
+              const title = document.getElementById("overlayTitle");
+              const detail = document.getElementById("overlayMessage");
+              if (title) title.textContent = "لا توجد فيديوهات صالحة";
+              if (detail) detail.textContent = "أضف رابط MP4 مباشر إلى قائمة الفيديوهات المرفوعة.";
               return;
             }
             if (currentUploadIdx >= list.length) currentUploadIdx = 0;

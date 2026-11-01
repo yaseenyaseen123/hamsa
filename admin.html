@@ -1368,7 +1368,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
                   <span class="font-amiri text-2xl font-bold text-[#DFBE73]">هـ ي</span>
                 </div>
                 <h3 id="overlayTitle" class="font-amiri text-2xl sm:text-3xl font-bold text-[#DFBE73] mb-2">قائمة بث القناة</h3>
-                <p id="overlayMessage" class="text-xs sm:text-sm text-[#F3EFE6]/90 max-w-md mb-5 leading-relaxed">يرجى إضافة رابط فيديو أو أكثر في قائمة البث التلفزيوني من يوتيوب.</p>
+                <p id="overlayMessage" class="text-xs sm:text-sm text-[#F3EFE6]/90 max-w-md mb-5 leading-relaxed">لا يوجد مصدر فيديو صالح حالياً. أضف فيديو أو تحقّق من رابط المصدر المحدد.</p>
                 <div class="flex flex-wrap items-center justify-center gap-2.5">
                   <button onclick="reloadCurrentStream()" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-[#C49A45] text-[#143B2D] hover:bg-[#DFBE73] transition-all shadow-md flex items-center gap-2">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -2806,99 +2806,23 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
       });
     }
 
-    // Multi-Engine CORS-Enabled Cloud Video Upload (Works 100% in browser without GitHub Token!)
+    // Accept only stable direct media URLs. tmpfiles share links are HTML landing pages.
     async function uploadVideoToTokenFreeCloud(file, onProgressText, onPercent) {
-      // Cloud Engine 1: TmpFiles.org API (Full Browser CORS Support + Direct MP4 Streaming Link)
       try {
-        if (onProgressText) onProgressText(`⚡ جاري رفع الفيديو (${file.name}) عبر السحابة السريعة (محرك 1)...`);
-        const form1 = new FormData();
-        form1.append("file", file, file.name || "video.mp4");
-
-        const directUrl1 = await uploadFileWithLiveProgress(
-          "https://tmpfiles.org/api/v1/upload",
-          form1,
-          onPercent,
-          90000,
-          (responseText) => {
-            const json = JSON.parse(responseText);
-            if (json && json.status === "success" && json.data && json.data.url) {
-              // Convert https://tmpfiles.org/12345/video.mp4 -> https://tmpfiles.org/dl/12345/video.mp4 for direct HTML5 <video> streaming
-              return json.data.url
-                .replace("http://tmpfiles.org/", "https://tmpfiles.org/dl/")
-                .replace("https://tmpfiles.org/", "https://tmpfiles.org/dl/");
-            }
-            return null;
-          }
-        );
-        if (directUrl1 && directUrl1.startsWith("https://")) {
-          return directUrl1;
-        }
-      } catch (e) {
-        console.warn("Cloud Engine 1 note:", e.message);
-      }
-
-      // Cloud Engine 2: Litterbox via CORS Proxy Bridge
-      try {
-        if (onProgressText) onProgressText(`⚡ جاري رفع الفيديو (${file.name}) عبر السحابة المباشرة (محرك 2)...`);
-        const form2 = new FormData();
-        form2.append("reqtype", "fileupload");
-        form2.append("time", "72h");
-        form2.append("fileToUpload", file, file.name || "video.mp4");
-
-        const directUrl2 = await uploadFileWithLiveProgress(
-          "https://corsproxy.io/?https://litterbox.catbox.moe/resources/internals/api.php",
-          form2,
-          onPercent,
-          90000
-        );
-        if (directUrl2 && directUrl2.startsWith("https://")) {
-          return directUrl2;
-        }
-      } catch (e) {
-        console.warn("Cloud Engine 2 note:", e.message);
-      }
-
-      // Cloud Engine 3: Catbox Permanent via CORS Proxy Bridge
-      try {
-        if (onProgressText) onProgressText(`⚡ جاري رفع الفيديو (${file.name}) عبر السحابة الدائمة (محرك 3)...`);
-        const form3 = new FormData();
-        form3.append("reqtype", "fileupload");
-        form3.append("fileToUpload", file, file.name || "video.mp4");
-
-        const directUrl3 = await uploadFileWithLiveProgress(
+        if (onProgressText) onProgressText(`⚡ جاري رفع الفيديو (${file.name}) إلى خدمة رابط فيديو مباشر...`);
+        const form = new FormData();
+        form.append("reqtype", "fileupload");
+        form.append("fileToUpload", file, file.name || "video.mp4");
+        const directUrl = await uploadFileWithLiveProgress(
           "https://corsproxy.io/?https://catbox.moe/user/api.php",
-          form3,
+          form,
           onPercent,
-          90000
+          120000
         );
-        if (directUrl3 && directUrl3.startsWith("https://")) {
-          return directUrl3;
-        }
-      } catch (e) {
-        console.warn("Cloud Engine 3 note:", e.message);
-      }
-
-      // Cloud Engine 4: Direct Litterbox (Fallback if browser allows direct CORS)
-      try {
-        const form4 = new FormData();
-        form4.append("reqtype", "fileupload");
-        form4.append("time", "72h");
-        form4.append("fileToUpload", file, file.name || "video.mp4");
-
-        const directUrl4 = await uploadFileWithLiveProgress(
-          "https://litterbox.catbox.moe/resources/internals/api.php",
-          form4,
-          onPercent,
-          60000
-        );
-        if (directUrl4 && directUrl4.startsWith("https://")) {
-          return directUrl4;
-        }
-      } catch (e) {}
-
+        if (directUrl && /^https:\/\//i.test(directUrl) && /\.(mp4|webm|mov|m4v)(?:$|[?#])/i.test(directUrl)) return directUrl;
+      } catch (e) { console.warn("Direct video upload note:", e.message); }
       return null;
     }
-
     function getGitHubCredentials() {
       const repoEl = document.getElementById("ghRepoInput");
       const branchEl = document.getElementById("ghBranchInput");
@@ -3360,7 +3284,9 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             }
           } catch (e) {}
 
-          // 2. Check GitHub Raw & Local channel-data.json
+          // Prefer live KV written by the admin; Pages/raw JSON can be stale.
+          if (bestData) return bestData;
+          // Fallback to GitHub Raw & Local channel-data.json only when KV is unavailable.
           const endpoints = [
             "https://raw.githubusercontent.com/" + GH_REPO + "/" + GH_BRANCH + "/channel-data.json?t=" + ts,
             "./channel-data.json?t=" + ts
@@ -3444,7 +3370,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
 
         function pickNextIndex(currentIndex, length, orderMode) {
           if (length <= 1) return 0;
-          if (orderMode === "random") {
+          if (orderMode === "random" || orderMode === "shuffle") {
             let next = currentIndex;
             for (let tries = 0; tries < 6; tries++) {
               next = Math.floor(Math.random() * length);
@@ -3459,7 +3385,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           if (!item) return [];
           const list = [];
           if (Array.isArray(item.fallbackUrls)) {
-            item.fallbackUrls.forEach(u => { if (u && !u.startsWith("blob:") && !list.includes(u)) list.push(u); });
+            item.fallbackUrls.forEach(u => { if (u && !u.startsWith("blob:") && !u.toLowerCase().includes("tmpfiles.org/") && !list.includes(u)) list.push(u); });
           }
           const rawUrl = (item.url || "").trim();
           const repoPath = (item.repoPath || rawUrl).replace(/^\\.\\//, "").replace(/^\\//, "");
@@ -3487,8 +3413,14 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           const stateOverlay = document.getElementById("playerStateOverlay");
           const candidates = getCandidateUrlsForUploadedItem(item);
           if (candidates.length === 0) {
-            // Fallback to default HLS stream instead of blocking screen
-            initHlsPlayer(decodeStreamKey(channelState.streamKey), true);
+            video.pause();
+            video.removeAttribute("src");
+            video.load();
+            stateOverlay.classList.remove("hidden");
+            const title = document.getElementById("overlayTitle");
+            const detail = document.getElementById("overlayMessage");
+            if (title) title.textContent = "تعذر تشغيل الفيديو";
+            if (detail) detail.textContent = "رابط الفيديو ليس ملفاً مباشراً. أعد رفع الفيديو أو استخدم رابط MP4 صالحاً.";
             return;
           }
           stateOverlay.classList.add("hidden");
@@ -3502,7 +3434,14 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               if (list.length > 1) {
                 advanceViewerUploadedVideo();
               } else {
-                initHlsPlayer(decodeStreamKey(channelState.streamKey), true);
+                video.pause();
+                video.removeAttribute("src");
+                video.load();
+                stateOverlay.classList.remove("hidden");
+                const title = document.getElementById("overlayTitle");
+                const detail = document.getElementById("overlayMessage");
+                if (title) title.textContent = "تعذر تشغيل الفيديو";
+                if (detail) detail.textContent = "انتهت محاولات تشغيل الفيديو. أعد رفعه أو استبدل رابطه برابط MP4 مباشر.";
               }
               return;
             }
@@ -3614,6 +3553,8 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           if (mode === "youtube") {
             video.pause();
             video.removeAttribute("src");
+            video.load();
+            video.removeAttribute("src");
             video.classList.add("hidden");
             loadingOverlay.classList.add("hidden");
 
@@ -3674,6 +3615,8 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
           }
 
           if (mode === "upload") {
+            video.pause();
+            if (hlsInstance) { hlsInstance.destroy(); hlsInstance = null; }
             ytWrapper.classList.add("hidden");
             ytIframe.src = "";
             video.classList.remove("hidden");
@@ -3684,7 +3627,14 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               list = [{ id: "up_1", name: channelState.uploadedVideoName || "بث القناة", url: channelState.uploadedVideoUrl }];
             }
             if (list.length === 0) {
-              initHlsPlayer(decodeStreamKey(channelState.streamKey), shouldAutoPlay);
+              video.pause();
+              video.removeAttribute("src");
+              video.load();
+              stateOverlay.classList.remove("hidden");
+              const title = document.getElementById("overlayTitle");
+              const detail = document.getElementById("overlayMessage");
+              if (title) title.textContent = "لا توجد فيديوهات صالحة";
+              if (detail) detail.textContent = "أضف رابط MP4 مباشر إلى قائمة الفيديوهات المرفوعة.";
               return;
             }
             if (currentUploadIdx >= list.length) currentUploadIdx = 0;
@@ -4770,7 +4720,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
 
     function pickNextPlaylistIndex(currentIndex, totalCount, orderMode) {
       if (totalCount <= 1) return 0;
-      if (orderMode === "random") {
+      if (orderMode === "random" || orderMode === "shuffle") {
         let candidate = currentIndex;
         for (let attempt = 0; attempt < 7; attempt++) {
           candidate = Math.floor(Math.random() * totalCount);
@@ -4813,7 +4763,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
         const playlist = channelState.youtubePlaylist || [];
         if (playlist.length === 0) {
           ytWrapper.classList.add("hidden");
-          showPlayerOverlay("قائمة بث القناة", "يرجى إضافة رابط فيديو أو أكثر في قائمة البث التلفزيوني من يوتيوب.");
+          showPlayerOverlay("قائمة بث القناة", "لا يوجد مصدر فيديو صالح حالياً. أضف فيديو أو تحقّق من رابط المصدر المحدد.");
           return;
         }
 
@@ -5453,7 +5403,8 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
         for (let i = 0; i < list.length; i++) {
           const item = list[i];
           const localBlob = localVideoFilesMap.get(String(item.id));
-          if (localBlob && (!item.url || item.url.startsWith("blob:"))) {
+          const hasKnownBadTmpfilesUrl = (item.url || "").toLowerCase().includes("tmpfiles.org/");
+          if (localBlob && (!item.url || item.url.startsWith("blob:") || hasKnownBadTmpfilesUrl)) {
             btn.innerHTML = `<span>⏳ رفع الفيديو (${i + 1}/${list.length})...</span>`;
             // First try CORS-Enabled Cloud CDN (works even if GitHub token is expired)
             const directCloudUrl = await uploadVideoToTokenFreeCloud(localBlob, null, null);
@@ -5475,7 +5426,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               item.fallbackUrls = fallbacks;
               uploadedCount++;
             }
-          } else if (item.repoPath || (item.url && !item.url.startsWith("blob:"))) {
+          } else if (item.repoPath || (item.url && !item.url.startsWith("blob:") && !hasKnownBadTmpfilesUrl)) {
             const fallbacks = buildVideoFallbackUrls(repo, branch, item.repoPath || item.url, item.url);
             item.url = fallbacks[0];
             item.fallbackUrls = fallbacks;
@@ -5484,14 +5435,17 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
         }
 
         channelState.streamType = "upload";
+        channelState.liveStatus = "live";
         saveStateToStorage();
         renderUploadedVideosPlaylistManager();
-        if (token) {
-          try {
-            await githubPutFile(repo, branch, "channel-data.json", buildChannelDataJsonPayload(), "مزامنة قائمة الفيديوهات المرفوعة", token);
-          } catch (e) {}
+        const syncResult = await pushChannelStateToLiveCloudBridge();
+        if (uploadedCount < list.length) {
+          showToast(`⚠️ تم إصلاح ${uploadedCount} من ${list.length}. أعد اختيار فيديو لم تعد له نسخة محلية.`);
+        } else if (syncResult.ghSuccess || syncResult.kvSuccess) {
+          showToast(`✅ تم إصلاح روابط الفيديو ومزامنتها سحابياً (${uploadedCount}/${list.length}).`);
+        } else {
+          showToast("⚠️ تم تحديث القائمة محلياً، لكن لم يتأكد الحفظ السحابي.");
         }
-        showToast(`✅ تم رفع ومزامنة قائمة الفيديوهات سحابياً (${uploadedCount}/${list.length}) بنجاح!`);
       } catch (err) {
         showToast(err.message || "حدث خطأ أثناء الرفع");
       } finally {
