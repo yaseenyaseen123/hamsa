@@ -1058,7 +1058,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <svg class="w-3.5 h-3.5 text-[#C49A45]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
-            <span id="headerClock">٠٩:٣٧ ص</span>
+            <span id="headerClock">٠٩:٥٨ ص</span>
           </div>
         </div>
 
@@ -1097,7 +1097,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
             <div id="playerContainer" class="player-viewport aspect-video w-full rounded-2xl relative select-none shadow-inner border border-[#C49A45]/30">
               
               <!-- HTML5 Video Element (For M3U8 Streams & Uploaded Videos Playlist) -->
-              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" loop="" src="blob:https://yaseenyaseen123.github.io/8c685e08-521e-4288-bec4-d4ad004a284b"></video>
+              <video id="hlsVideo" class="w-full h-full rounded-2xl" playsinline="" crossorigin="anonymous" src="blob:https://yaseenyaseen123.github.io/4582b6c0-16c9-4aef-ada1-f94bae979a42"></video>
 
               <!-- YouTube TV Broadcast Wrapper (Hides YouTube Chrome & Blocks Seeking/Pausing) -->
               <div id="youtubeTvBroadcastWrapper" class="hidden absolute inset-0 w-full h-full rounded-2xl overflow-hidden bg-[#112E23]">
@@ -1134,7 +1134,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               </div>
 
               <!-- Standby / Reconnect Overlay (Viewer-safe, zero URL exposure) -->
-              <div id="playerStateOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#143B2D]/95 to-[#112E23]/98 text-[#FBF9F5] p-6 text-center hidden">
+              <div id="playerStateOverlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center bg-gradient-to-b from-[#143B2D]/95 to-[#112E23]/98 text-[#FBF9F5] p-6 text-center">
                 <div class="w-16 h-16 mb-3 rounded-2xl flex items-center justify-center border border-[#C49A45] bg-[#1E5240]/60 shadow-lg">
                   <span class="font-amiri text-2xl font-bold text-[#DFBE73]">هـ ي</span>
                 </div>
@@ -1191,13 +1191,13 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
               <!-- Center Stream Status Text -->
               <div class="hidden md:flex items-center gap-2 text-xs text-[#F3EFE6]/90">
                 <span class="w-2 h-2 rounded-full bg-[#DFBE73]"></span>
-                <span id="playerStatusText">البث الرسمي المباشر • قناة همسة ياسين</span>
+                <span id="playerStatusText">جاري الاتصال بالبث المباشر...</span>
               </div>
 
               <!-- Left Side Controls (Quality Selector, PiP, Fullscreen) -->
               <div class="flex items-center gap-2">
                 <!-- HLS Quality Selector -->
-                <select id="qualitySelector" onchange="changeQualityLevel(this.value)" class="bg-white/10 border border-[#C49A45]/50 text-[#FBF9F5] text-xs font-bold rounded-xl px-2.5 py-1.5 focus:outline-none cursor-pointer"><option value="-1" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: تلقائي</option><option value="0" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 184p</option><option value="1" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 288p</option><option value="2" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 480p</option><option value="3" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 720p</option><option value="4" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: 1080p</option></select>
+                <select id="qualitySelector" onchange="changeQualityLevel(this.value)" class="bg-white/10 border border-[#C49A45]/50 text-[#FBF9F5] text-xs font-bold rounded-xl px-2.5 py-1.5 focus:outline-none cursor-pointer"><option value="-1" class="text-[#2A2421] bg-[#FBF9F5]">الجودة: تلقائي</option></select>
 
                 <!-- Picture in Picture -->
                 <button onclick="togglePiP()" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-[#DFBE73] transition-all" title="نافذة عائمة (صورة داخل صورة)">
@@ -1417,7 +1417,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   <!-- ================= TOAST NOTIFICATION ================= -->
   <div id="toastNotification" class="fixed bottom-5 left-5 z-50 transform pointer-events-none transition-all duration-300 px-4 py-3 rounded-2xl shadow-xl flex items-center gap-3 border translate-y-20 opacity-0" style="background-color: var(--brand-primary); color: #FBF9F5; border-color: var(--accent-gold);">
     <span class="w-2.5 h-2.5 rounded-full bg-[#DFBE73]"></span>
-    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">🎬 يُعرض الآن: video_Qp2kojGBJrY_1793439381_7724.mp4</span>
+    <span id="toastMessageText" class="text-xs sm:text-sm font-bold">✅ تم حفظ ومزامنة تعديلات البث مع موقع المشاهدين بنجاح!</span>
   </div>
 
   <!-- ================= APPLICATION JAVASCRIPT ================= -->
@@ -1431,8 +1431,8 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
   "channelName": "همسة ياسين",
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
   "theme": "emerald",
-  "streamType": "upload",
-  "streamKey": "aHR0cHM6Ly90ZXN0LXN0cmVhbXMubXV4LmRldi94MzZ4aHp6L3gzNnhoenoubTN1OA==",
+  "streamType": "m3u8",
+  "streamKey": "aHR0cDovLzE3My4yMTIuMjI3LjI0MTo4MDgwL2xpdmUvc2FiYXR2Lm0zdTg=",
   "youtubeUrl": "",
   "youtubeVideoId": "",
   "youtubePlaylist": [],
@@ -1502,7 +1502,7 @@ url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMExce
       "active": false
     }
   ],
-  "updatedAt": "2026-11-01T06:37:34.343Z"
+  "updatedAt": "2026-11-01T06:58:31.643Z"
 };
         let hlsInstance = null;
         let fetchedRssHeadlines = [];
