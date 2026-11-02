@@ -2,8 +2,8 @@
   "channelName": "همسة ياسين",
   "channelTagline": "منبر الكلمة الطيبة والإطلالة الراقية",
   "theme": "emerald",
-  "streamType": "upload",
-  "streamKey": "aHR0cDovLzE3My4yMTIuMjI3LjI0MTo4MDgwL2xpdmUvc2FiYXR2Lm0zdTg=",
+  "streamType": "m3u8",
+  "streamKey": "aHR0cHM6Ly90b3B0b3Auc2JzOjQ0My9zYWJhMTIvc2FiYTEyLzQyNTMudHM=",
   "youtubeUrl": "",
   "youtubeVideoId": "",
   "youtubePlaylist": [],
@@ -61,7 +61,7 @@
   "uploadedActiveIndex": 0,
   "uploadPlaybackOrder": "sequential",
   "loopUploadedVideo": true,
-  "liveStatus": "recorded",
+  "liveStatus": "live",
   "showWatermark": true,
   "autoPlay": true,
   "showTicker": true,
@@ -108,5 +108,5 @@
       "active": false
     }
   ],
-  "updatedAt": "2026-11-02T07:28:36.604Z"
+  "updatedAt": "2026-11-02T07:31:51.361Z"
 }
